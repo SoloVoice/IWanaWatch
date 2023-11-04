@@ -4,7 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.os.CountDownTimer;
+import android.widget.ProgressBar;
 
 public class WelcomePage extends AppCompatActivity {
 
@@ -13,6 +14,18 @@ public class WelcomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_page);
         Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        ProgressBar progressBar = findViewById(R.id.welcomePageProgressBar);
+
+        new CountDownTimer(10000, 100) {
+            int pr = 0;
+            @Override
+            public void onTick(long l) {
+                progressBar.setProgress(pr);
+                pr ++;
+            }
+            public void onFinish() {
+                startActivity(intent);
+            }
+        }.start();
     }
 }
