@@ -2,7 +2,9 @@ package com.solo.iwanawatch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class WelcomePage extends AppCompatActivity {
 
@@ -10,5 +12,7 @@ public class WelcomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_page);
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
