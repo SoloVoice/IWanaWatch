@@ -15,13 +15,12 @@ public class WelcomePage extends AppCompatActivity {
         setContentView(R.layout.activity_welcome_page);
         Intent intent = new Intent(this, MainActivity.class);
         ProgressBar progressBar = findViewById(R.id.welcomePageProgressBar);
-
-        new CountDownTimer(10000, 100) {
+        new CountDownTimer(10000, 1000) {
             int pr = 0;
             @Override
             public void onTick(long l) {
                 progressBar.setProgress(pr);
-                pr ++;
+                pr += 12;
             }
             public void onFinish() {
                 startActivity(intent);
