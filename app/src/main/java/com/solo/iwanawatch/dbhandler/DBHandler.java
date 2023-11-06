@@ -2,8 +2,13 @@ package com.solo.iwanawatch.dbhandler;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.solo.iwanawatch.data.MovieDATA;
+
+import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
 
@@ -43,5 +48,23 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(RATING_COL, movieRating);
         db.insert(TABLE_NAME, null, values);
         db.close();
+    }
+
+    public ArrayList<MovieDATA> getMovieList() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        ArrayList<MovieDATA> movieDATAArrayList = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                movieDATAArrayList.add(
+                        new MovieDATA(
+                                cursor.getString(1),
+                                cursor.getString(2),
+                                cursor.getString(3)
+                        ));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return movieDATAArrayList;
     }
 }

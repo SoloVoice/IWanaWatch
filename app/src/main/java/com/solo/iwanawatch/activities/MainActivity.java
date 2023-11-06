@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
                 addNewMovieActivity();
             }
         });
+        dbHandler = new DBHandler(this);
+        dbHandler.getMovieList();
     }
 
     public void addNewMovieActivity() {
