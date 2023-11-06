@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.solo.iwanawatch.R;
+import com.solo.iwanawatch.dbhandler.DBHandler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,10 +32,15 @@ public class MainActivity extends AppCompatActivity {
             "Полицейская История",
             "Бойцовский Клуб",
             "Калина Красная",
-            "Иван Васильевич Меняет Профессию"
+            "Иван Васильевич Меняет Профессию",
+            "Гарри Поттер",
+            "Алладин",
+            "Корпорация Монстров",
+            "Карты Деньги Два Ствола"
     };
     private ListView listView;
     private FloatingActionButton floatingActionButton;
+    private DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
