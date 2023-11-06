@@ -11,7 +11,10 @@ import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.solo.iwanawatch.R;
+import com.solo.iwanawatch.data.MovieDATA;
 import com.solo.iwanawatch.dbhandler.DBHandler;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,8 +50,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        dbHandler = new DBHandler(this);
+
         listView = findViewById(R.id.movie_list);
-        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, movieList));
+        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ass()));
 
         floatingActionButton = findViewById(R.id.openAddNewMovieActivityButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -57,13 +62,21 @@ public class MainActivity extends AppCompatActivity {
                 addNewMovieActivity();
             }
         });
-        dbHandler = new DBHandler(this);
-        dbHandler.getMovieList();
     }
 
     public void addNewMovieActivity() {
         Intent intent = new Intent(this, AddNewMovie.class);
         startActivity(intent);
+    }
+
+    private String[] ass() {
+        ArrayList<MovieDATA> movieDATAArrayList = dbHandler.getMovieList();
+        String a[] = new String[movieDATAArrayList.size()];
+        for (int i = 0; i < a.length-1; i++) {
+            MovieDATA md = movieDATAArrayList.get(i);
+            a[i] = md.getName();
+        }
+        return a;
     }
 
 
