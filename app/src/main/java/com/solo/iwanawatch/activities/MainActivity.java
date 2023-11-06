@@ -51,9 +51,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dbHandler = new DBHandler(this);
+        String sss[] = ass();
 
         listView = findViewById(R.id.movie_list);
-        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ass()));
+        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sss));
 
         floatingActionButton = findViewById(R.id.openAddNewMovieActivityButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     private String[] ass() {
         ArrayList<MovieDATA> movieDATAArrayList = dbHandler.getMovieList();
         String a[] = new String[movieDATAArrayList.size()];
-        for (int i = 0; i < a.length-1; i++) {
+        for (int i = 0; i < a.length; i++) {
             MovieDATA md = movieDATAArrayList.get(i);
             a[i] = md.getName();
         }
