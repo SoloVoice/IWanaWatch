@@ -37,7 +37,7 @@ public class AddNewMovie extends AppCompatActivity {
     }
 
     public void addNewMovie() {
-        dbHandler.addNewMovie(movieName.toString(), movieYear.toString(), movieRating.toString());
+        dbHandler.addNewMovie(movieName.getText().toString(), movieYear.getText().toString(), movieRating.getText().toString());
         movieName.setText("");
         movieYear.setText("");
         movieRating.setText("");
