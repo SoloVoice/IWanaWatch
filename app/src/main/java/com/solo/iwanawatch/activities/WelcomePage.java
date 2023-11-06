@@ -1,4 +1,4 @@
-package com.solo.iwanawatch;
+package com.solo.iwanawatch.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.ProgressBar;
+
+import com.solo.iwanawatch.R;
+import com.solo.iwanawatch.activities.MainActivity;
 
 public class WelcomePage extends AppCompatActivity {
 
