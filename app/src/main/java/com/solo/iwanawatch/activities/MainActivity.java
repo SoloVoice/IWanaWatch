@@ -2,10 +2,14 @@ package com.solo.iwanawatch.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.solo.iwanawatch.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
             "Калина Красная",
             "Иван Васильевич Меняет Профессию"
     };
-    ListView listView;
+    private ListView listView;
+    private FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,19 @@ public class MainActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.movie_list);
         listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, movieList));
+
+        floatingActionButton = findViewById(R.id.openAddNewMovieActivityButton);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addNewMovieActivity();
+            }
+        });
+    }
+
+    public void addNewMovieActivity() {
+        Intent intent = new Intent(this, AddNewMovie.class);
+        startActivity(intent);
     }
 
 

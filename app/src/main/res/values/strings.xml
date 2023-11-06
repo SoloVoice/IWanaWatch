@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">I Wana Watch</string>
     <string name="welcome_message">I Wana Watch</string>
+    <string name="add_new_movie_button">Добавить фильм в список</string>
 </resources>
