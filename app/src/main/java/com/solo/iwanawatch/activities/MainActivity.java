@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -18,32 +19,12 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    String[] movieList  = new String[] {
-            "Старикам Тут Не Место",
-            "Звездные Войны 6",
-            "Пираты Карибского Моря",
-            "Назад В Будущее",
-            "Полицейская Академия",
-            "Доспехи Бога",
-            "Звездный Десант",
-            "Бегущмий По Лезвию",
-            "Амели",
-            "Доктор Кто",
-            "Убийство В Восточном Экспресе",
-            "Джанго",
-            "Супермен",
-            "Полицейская История",
-            "Бойцовский Клуб",
-            "Калина Красная",
-            "Иван Васильевич Меняет Профессию",
-            "Гарри Поттер",
-            "Алладин",
-            "Корпорация Монстров",
-            "Карты Деньги Два Ствола"
-    };
     private ListView listView;
+    private Button startGameButton;
     private FloatingActionButton floatingActionButton;
     private DBHandler dbHandler;
+
+    private String[] movieArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,22 +32,37 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dbHandler = new DBHandler(this);
-        String sss[] = ass();
+
+        movieArray = ass();
 
         listView = findViewById(R.id.movie_list);
-        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, sss));
+        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, movieArray));
+
+        startGameButton = findViewById(R.id.startGameButton);
+        startGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                moveToNextActivity(RamdomizerMovie.class, movieArray);
+            }
+        });
 
         floatingActionButton = findViewById(R.id.openAddNewMovieActivityButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addNewMovieActivity();
+                moveToNextActivity(AddNewMovie.class);
             }
         });
     }
 
-    public void addNewMovieActivity() {
-        Intent intent = new Intent(this, AddNewMovie.class);
+    public void moveToNextActivity(Class cl) {
+        Intent intent = new Intent(this, cl);
+        startActivity(intent);
+    }
+
+    public void moveToNextActivity(Class cl, String[] stringsArray) {
+        Intent intent = new Intent(this, cl);
+        intent.putExtra("mA", movieArray);
         startActivity(intent);
     }
 
@@ -79,6 +75,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return a;
     }
-
-
 }

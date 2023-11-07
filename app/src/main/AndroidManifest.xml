@@ -15,6 +15,9 @@
         android:theme="@style/Theme.IWanaWatch"
         tools:targetApi="31">
         <activity
+            android:name=".activities.RamdomizerMovie"
+            android:exported="false" />
+        <activity
             android:name=".activities.AddNewMovie"
             android:exported="false" />
         <activity

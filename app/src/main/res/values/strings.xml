@@ -3,4 +3,5 @@
     <string name="welcome_message">I Wana Watch</string>
     <string name="add_new_movie_button">Добавить фильм в список</string>
     <string name="start_game">Выбрать Фильм</string>
+    <string name="watch_movie_button">Ушел смотреть фильм</string>
 </resources>

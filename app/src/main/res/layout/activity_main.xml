@@ -10,7 +10,7 @@
         android:id="@+id/openAddNewMovieActivityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginBottom="20dp"
         android:clickable="true"
         android:contentDescription="openAddNewMovieActivityButton"
@@ -36,7 +36,7 @@
     </ListView>
 
     <Button
-        android:id="@+id/StartGame"
+        android:id="@+id/startGameButton"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="15dp"
