@@ -40,7 +40,7 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public void addNewMovie(MovieDATA movieDATA) {
+    public void createMovie(MovieDATA movieDATA) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(NAME_COL, movieDATA.getName());
@@ -50,7 +50,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public ArrayList<MovieDATA> getMovieList() {
+    public ArrayList<MovieDATA> readMovieList() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
         ArrayList<MovieDATA> movieDATAArrayList = new ArrayList<>();

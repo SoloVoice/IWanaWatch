@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String[] ass() {
-        ArrayList<MovieDATA> movieDATAArrayList = dbHandler.getMovieList();
+        ArrayList<MovieDATA> movieDATAArrayList = dbHandler.readMovieList();
         String a[] = new String[movieDATAArrayList.size()];
         for (int i = 0; i < a.length; i++) {
             MovieDATA md = movieDATAArrayList.get(i);
