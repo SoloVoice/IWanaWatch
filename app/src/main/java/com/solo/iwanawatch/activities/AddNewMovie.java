@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.solo.iwanawatch.R;
+import com.solo.iwanawatch.data.MovieDATA;
 import com.solo.iwanawatch.dbhandler.DBHandler;
 
 public class AddNewMovie extends AppCompatActivity {
@@ -38,7 +39,12 @@ public class AddNewMovie extends AppCompatActivity {
     }
 
     public void addNewMovie() {
-        dbHandler.addNewMovie(movieName.getText().toString(), movieYear.getText().toString(), movieRating.getText().toString());
+        MovieDATA movieDATA = new MovieDATA(
+                movieName.getText().toString(),
+                movieYear.getText().toString(),
+                movieRating.getText().toString()
+        );
+        dbHandler.addNewMovie(movieDATA);
         movieName.setText("");
         movieYear.setText("");
         movieRating.setText("");

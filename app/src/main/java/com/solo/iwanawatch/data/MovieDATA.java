@@ -8,22 +8,22 @@ public class MovieDATA {
     private String year;
     private String rating;
 
-    public MovieDATA(String s, String s1, String s2) {
-        name = s;
-        year = s1;
-        rating = s2;
+    public MovieDATA(String name, String year, String rating) {
+        name = name;
+        year = year;
+        rating = rating;
     }
 
-    public void setName(String s) {
-        name = s;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setYear(String s) {
-        year = s;
+    public void setYear(String year) {
+        this.year = year;
     }
 
-    public void setRating(String s) {
-        rating = s;
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 
     public String getName() {

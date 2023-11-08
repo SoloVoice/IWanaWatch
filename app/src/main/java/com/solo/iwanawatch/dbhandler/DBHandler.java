@@ -40,12 +40,12 @@ public class DBHandler extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public void addNewMovie(String movieName, String movieYear, String movieRating) {
+    public void addNewMovie(MovieDATA movieDATA) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(NAME_COL, movieName);
-        values.put(YEAR_COL, movieYear);
-        values.put(RATING_COL, movieRating);
+        values.put(NAME_COL, movieDATA.getName());
+        values.put(YEAR_COL, movieDATA.getYear());
+        values.put(RATING_COL, movieDATA.getRating());
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
