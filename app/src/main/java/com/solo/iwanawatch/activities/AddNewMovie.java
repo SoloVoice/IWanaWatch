@@ -42,7 +42,8 @@ public class AddNewMovie extends AppCompatActivity {
         MovieDATA movieDATA = new MovieDATA(
                 movieName,
                 movieYear,
-                movieRating
+                movieRating,
+                "false"
         );
         dbHandler.createMovie(movieDATA);
         movieName.setText("");

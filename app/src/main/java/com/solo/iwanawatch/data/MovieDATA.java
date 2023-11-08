@@ -9,29 +9,20 @@ public class MovieDATA {
     private String name;
     private String year;
     private String rating;
+    private Boolean watched;
 
-    public MovieDATA(String name, String year, String rating) {
+    public MovieDATA(String name, String year, String rating, Boolean watched) {
         this.name = name;
         this.year = year;
         this.rating = rating;
+        this.watched = watched;
     }
 
-    public MovieDATA(EditText name, EditText year, EditText rating) {
+    public MovieDATA(EditText name, EditText year, EditText rating, String wathed) {
         this.name = name.getText().toString();
         this.year = year.getText().toString();
         this.rating = rating.getText().toString();
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
+        this.watched = Boolean.valueOf(wathed);
     }
 
     public String getName() {
@@ -44,5 +35,9 @@ public class MovieDATA {
 
     public String getRating() {
         return rating;
+    }
+
+    public Boolean getWatched() {
+        return watched;
     }
 }

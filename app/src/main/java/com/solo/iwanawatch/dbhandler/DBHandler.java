@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.solo.iwanawatch.data.MovieDATA;
 
 import java.util.ArrayList;
+import java.util.function.ToDoubleBiFunction;
 
 public class DBHandler extends SQLiteOpenHelper {
 
@@ -19,6 +20,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public static final String NAME_COL = "name";
     public static final String YEAR_COL = "year";
     public static final String RATING_COL = "rating";
+    public static final String WATCHED_COL = "watched";
 
     public DBHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -30,7 +32,8 @@ public class DBHandler extends SQLiteOpenHelper {
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + NAME_COL + " TEXT,"
                 + YEAR_COL + " TEXT,"
-                + RATING_COL + " TEXT)";
+                + RATING_COL + " TEXT,"
+                + WATCHED_COL + " TEXT)";
         sqLiteDatabase.execSQL(query);
     }
 
@@ -46,6 +49,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(NAME_COL, movieDATA.getName());
         values.put(YEAR_COL, movieDATA.getYear());
         values.put(RATING_COL, movieDATA.getRating());
+        values.put(WATCHED_COL, movieDATA.getWatched().toString());
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
@@ -60,11 +64,24 @@ public class DBHandler extends SQLiteOpenHelper {
                         new MovieDATA(
                                 cursor.getString(1),
                                 cursor.getString(2),
-                                cursor.getString(3)
+                                cursor.getString(3),
+                                Boolean.valueOf(cursor.getString(4))
                         ));
             } while (cursor.moveToNext());
         }
         cursor.close();
         return movieDATAArrayList;
+    }
+
+    //TODO: Сделать добавление нового атрибута, для определения был ли фильм просмотрен или нет.
+    public void updateMovie(MovieDATA movieDATA) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(NAME_COL, movieDATA.getName());
+        values.put(YEAR_COL, movieDATA.getYear());
+        values.put(RATING_COL, movieDATA.getRating());
+        values.put(WATCHED_COL, movieDATA.getWatched().toString());
+        db.update(TABLE_NAME, values, "NAME =" + movieDATA.getName(), null);
+        db.close();
     }
 }
