@@ -84,4 +84,11 @@ public class DBHandler extends SQLiteOpenHelper {
         db.update(TABLE_NAME, values, "NAME =" + movieDATA.getName(), null);
         db.close();
     }
+
+    public void deleteMovie(MovieDATA movieDATA) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        db.delete(TABLE_NAME, NAME_COL + "=" + movieDATA.getName(), new String[]{});
+        db.close();
+    }
 }
