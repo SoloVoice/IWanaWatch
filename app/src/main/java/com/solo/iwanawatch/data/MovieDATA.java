@@ -2,9 +2,6 @@ package com.solo.iwanawatch.data;
 
 import android.widget.EditText;
 
-import lombok.Getter;
-import lombok.Setter;
-
 public class MovieDATA {
     private String name;
     private String year;

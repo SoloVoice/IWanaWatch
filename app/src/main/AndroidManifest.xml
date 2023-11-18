@@ -18,7 +18,7 @@
             android:name=".Itemlist.ItemList"
             android:exported="false" />
         <activity
-            android:name=".activities.RamdomizerMovie"
+            android:name=".activities.RandomizerMovie"
             android:exported="false"
             android:noHistory="true"/>
         <activity
