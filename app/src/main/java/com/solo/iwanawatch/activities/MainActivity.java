@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         startGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                moveToNextActivity(RandomizerMovie.class, movieDATAArrayList);
+                moveToNextActivity(RandomizerMovie.class);
             }
         });
 

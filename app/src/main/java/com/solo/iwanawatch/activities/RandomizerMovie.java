@@ -9,22 +9,30 @@ import android.widget.TextView;
 
 import com.solo.iwanawatch.R;
 import com.solo.iwanawatch.data.MovieDATA;
+import com.solo.iwanawatch.databinding.ActivityRamdomizerMovieBinding;
+import com.solo.iwanawatch.dbhandler.DBHandler;
 
 import java.util.ArrayList;
 
 public class RandomizerMovie extends AppCompatActivity {
 
+    ActivityRamdomizerMovieBinding binding;
     private ArrayList<MovieDATA> movieDATAArrayList;
     private TextView showMovie, randomTimer;
+    DBHandler dbHandler;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ramdomizer_movie);
+        binding = ActivityRamdomizerMovieBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        dbHandler = new DBHandler(this);
 
         Bundle arguments = getIntent().getExtras();
-        movieDATAArrayList = (ArrayList<MovieDATA>) arguments.get("mA");
+        movieDATAArrayList = dbHandler.readMovieList();
+//        movieDATAArrayList = (ArrayList<MovieDATA>) arguments.get("mA");
 
         showMovie = findViewById(R.id.assignMovie);
         randomTimer = findViewById(R.id.randomTimer);
@@ -40,7 +48,7 @@ public class RandomizerMovie extends AppCompatActivity {
     }
 
     private void startTimer() {
-        new CountDownTimer(10000, 1000) {
+        new CountDownTimer(5000, 1000) {
             int timer = 5;
             @Override
             public void onTick(long l) {
