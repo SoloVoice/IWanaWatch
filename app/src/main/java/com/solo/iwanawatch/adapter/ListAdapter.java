@@ -34,6 +34,6 @@ public class ListAdapter extends ArrayAdapter<MovieDATA> {
         movieName.setText(movieDATA.getName());
         movieYear.setText(movieDATA.getYear());
 
-        return super.getView(position, convertView, parent);
+        return convertView;
     }
 }

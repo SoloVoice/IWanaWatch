@@ -41,12 +41,7 @@ public class MainActivity extends AppCompatActivity {
         ListAdapter listAdapter = new ListAdapter(MainActivity.this, movieDATAArrayList);
         binding.movieList.setAdapter(listAdapter);
         binding.movieList.setClickable(true);
-        binding.movieList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+//        binding.movieList.setOnItemClickListener(new View.OnClickListener());
 
 //        listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, movieArray));
 
